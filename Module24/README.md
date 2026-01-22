@@ -1,152 +1,117 @@
-Network Intrusion Detection Using Machine Learning
-Project Overview
+# Network Intrusion Detection Using Machine Learning
 
-Modern computer networks generate massive volumes of traffic, making it difficult to detect malicious activity using traditional rule-based security systems alone. Cyberattacks such as denial-of-service (DoS), port scanning, brute-force attacks, and infiltration attempts can disrupt services, compromise sensitive data, and lead to financial and operational losses.
+## Project Overview
 
-This capstone project develops a machine-learning-based Network Intrusion Detection System (NIDS) that automatically classifies network traffic as benign or malicious using structured network flow data. The project applies classical supervised machine-learning techniques to a real-world cybersecurity dataset and evaluates their effectiveness through a complete end-to-end data science workflow.
+Modern computer networks generate massive volumes of traffic, making it difficult to detect malicious activity using traditional rule-based security systems. Cyberattacks such as denial-of-service (DoS), port scanning, brute-force attacks, and infiltration attempts can disrupt services, compromise sensitive data, and result in significant financial and operational losses.
 
-The goal of this project is not only to build accurate models, but also to compare multiple approaches, interpret results clearly, and communicate findings in a way that is understandable to both technical and non-technical audiences.
+This capstone project develops a **machine-learning-based Network Intrusion Detection System (NIDS)** that automatically classifies network traffic as **benign** or **malicious** using structured network flow data. The project applies classical supervised machine-learning techniques and evaluates their effectiveness through a complete end-to-end data science workflow.
 
-Dataset
+This repository contains the **full capstone project**, including data preparation, feature engineering, model training, validation, evaluation, and final findings.
 
-This project uses the CICIDS-2017 dataset, a well-known benchmark dataset created by the Canadian Institute for Cybersecurity. The dataset contains real-world network traffic captured over multiple days and includes both normal traffic and a wide variety of attack types such as:
+---
 
-DoS and DDoS attacks
+## Dataset
 
-Port scanning
+The project uses the **CICIDS-2017** dataset, a widely recognized real-world benchmark dataset created by the Canadian Institute for Cybersecurity. The dataset contains network traffic representing both normal behavior and multiple categories of cyberattacks, including:
 
-Brute-force attacks
+- DoS and DDoS attacks  
+- Port scanning  
+- Brute-force attacks  
+- Infiltration and web-based attacks  
 
-Infiltration and web-based attacks
+The raw dataset consists of multiple CSV files and millions of records. During preprocessing, the data is cleaned, filtered, and sampled to ensure quality, balance, and computational feasibility.
 
-The raw dataset consists of multiple CSV files and millions of records. To make modeling computationally feasible and statistically meaningful, the data is cleaned, filtered, and sampled during preprocessing.
+---
 
-Project Structure
-├── data/
-│   └── (raw and/or processed dataset files)
-├── notebooks/
-│   └── FinalCapstone.ipynb
-├── models/
-│   └── saved model files (if applicable)
-├── README.md
+## Project Structure
 
+├── FinalCapstone.ipynb
+└── README.md
 
-FinalCapstone.ipynb contains the complete analysis, modeling, visualizations, and results.
+- **FinalCapstone.ipynb** contains the complete analysis, modeling, visualizations, and results.
+- All files and directories are named and organized for clarity and reproducibility.
 
-All code, outputs, and explanations are organized and clearly labeled for readability and reproducibility.
+---
 
-Methodology
+## Methodology
 
 This project follows a structured data science workflow:
 
-1. Data Loading and Cleaning
+### Data Cleaning and Preprocessing
+- Combined multiple dataset files into a single dataframe
+- Removed non-generalizable features such as identifiers and timestamps
+- Handled missing, infinite, and invalid values
+- Ensured data consistency and quality
 
-Combined multiple dataset files into a single dataframe
+### Exploratory Data Analysis (EDA)
+- Analyzed class distributions and potential imbalance
+- Explored key numerical and categorical features
+- Used visualizations to understand traffic patterns and anomalies
 
-Removed irrelevant or non-generalizable features (e.g., identifiers and timestamps)
+### Feature Engineering
+- Selected relevant features for modeling
+- Encoded categorical variables where necessary
+- Scaled numerical features for models requiring normalization
 
-Handled missing, infinite, and invalid values
+### Modeling
+Three supervised machine-learning models were implemented and compared:
 
-Verified data quality and consistency
+- **Logistic Regression** – baseline linear classification model  
+- **Decision Tree** – interpretable, rule-based classifier  
+- **Random Forest** – ensemble model for improved accuracy and generalization  
 
-2. Exploratory Data Analysis (EDA)
+Hyperparameter tuning and cross-validation were applied to improve performance and reduce overfitting.
 
-Examined class distributions and imbalance
+### Model Evaluation
+Models were evaluated using clearly defined metrics, including:
+- Accuracy
+- Confusion matrices
+- Comparative performance analysis across models
 
-Explored key numerical and categorical features
+Visualizations were used to support interpretation and highlight differences in model behavior.
 
-Used visualizations to understand traffic patterns and anomalies
+---
 
-3. Feature Engineering
+## Results and Findings
 
-Selected relevant features for modeling
+- All three models successfully learned meaningful patterns in network traffic data.
+- **Random Forest** achieved the strongest overall performance, demonstrating high accuracy and stability.
+- **Decision Tree** performed well while offering interpretability of decision rules.
+- **Logistic Regression** served as a strong baseline but was less effective for complex, non-linear patterns.
 
-Encoded categorical variables where necessary
+The results indicate that ensemble-based models are particularly well-suited for intrusion detection tasks involving high-dimensional network data.
 
-Scaled numerical features for models that require normalization
+---
 
-4. Modeling
+## Key Takeaways
 
-Three supervised machine-learning models were trained and evaluated:
+- Machine learning is highly effective for detecting malicious network traffic.
+- Data cleaning and feature engineering significantly impact model performance.
+- Random Forest provides the best balance of accuracy and robustness.
+- Clear evaluation metrics and visualizations improve interpretability and communication of results.
 
-Logistic Regression
-Used as a baseline linear classifier to establish a performance reference.
+---
 
-Decision Tree Classifier
-Provides interpretable, rule-based decisions and insight into feature importance.
+## How to Run the Project
 
-Random Forest Classifier
-An ensemble approach that improves robustness and generalization by combining multiple decision trees.
+1. Clone the repository:
+   git clone <your-github-repository-url>
+2. Install required dependencies:
+   pip install -r requirements.txt
+3. Launch Jupyter Notebook:
+   jupyter notebook
+4. Open and run:
+   FinalCapstone.ipynb
 
-Hyperparameter tuning and cross-validation were used where appropriate to improve model performance and reduce overfitting.
-
-5. Model Evaluation
-
-Models were evaluated using clearly defined metrics such as:
-
-Accuracy
-
-Confusion matrices
-
-Classification performance comparisons
-
-Visualizations were used to support interpretation and highlight differences between models.
-
-Results and Findings
-
-All three models successfully learned patterns in network traffic data.
-
-Random Forest achieved the strongest overall performance, demonstrating high accuracy and stability.
-
-Decision Tree offered strong performance with the advantage of interpretability.
-
-Logistic Regression served as a useful baseline but was less effective for complex, non-linear patterns.
-
-The results show that ensemble-based models are particularly well-suited for intrusion detection tasks involving high-dimensional and non-linear data.
-
-Key Takeaways
-
-Machine learning is highly effective for detecting malicious network traffic.
-
-Feature engineering and proper preprocessing significantly impact model performance.
-
-Ensemble methods such as Random Forest provide strong accuracy and robustness.
-
-Clear evaluation metrics and visualizations are essential for interpreting and communicating results.
-
-How to Run the Project
-
-Clone the repository:
-
-git clone <your-github-repo-url>
-
-
-Install required libraries:
-
-pip install -r requirements.txt
-
-
-Open the Jupyter Notebook:
-
-jupyter notebook
-
-
-Run FinalCapstone.ipynb from top to bottom.
-
-Conclusion and Next Steps
+## Conclusion and Next Steps
 
 This capstone demonstrates a complete, end-to-end application of machine learning to a real-world cybersecurity problem. By comparing multiple classification models and interpreting their results, the project provides practical insights into building effective intrusion detection systems.
 
-Future improvements could include:
+Potential future improvements include:
 
-Testing additional models (e.g., gradient boosting)
+- Testing additional machine-learning models  
+- Addressing class imbalance using advanced sampling techniques  
+- Evaluating performance on additional intrusion detection datasets  
+- Exploring real-time intrusion detection systems  
 
-Handling class imbalance with advanced sampling techniques
 
-Evaluating performance on additional intrusion detection datasets
-
-Exploring real-time or streaming-based intrusion detection
-
-Author
-
-Rishitha Chintamreddy
